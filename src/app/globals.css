@@ -1195,7 +1195,11 @@ body {
   margin-top: 0.5rem;
 }
 
-/* Parallax: sections 1 & 2 normal; sections 3 & 4 overlay each other */
+/* Parallax: all 4 sections overlay (1 under 2 under 3 under 4) */
+.cb-parallax-wrap {
+  position: relative;
+  width: 100%;
+}
 .cb-parallax-section {
   min-height: 100vh;
   display: flex;
