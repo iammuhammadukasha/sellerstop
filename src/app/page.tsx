@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import HeroOrbit from './components/HeroOrbit';
-import ParallaxScrollSections from './components/ParallaxScrollSections';
+import HowItWorksCarousel from './components/HowItWorksCarousel';
 
 export default function CashBuyerPage() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -71,7 +71,76 @@ export default function CashBuyerPage() {
       </header>
       </div>
 
-      <ParallaxScrollSections />
+      <section className="cb-section cb-section-card-wrap" id="how">
+        <div className="cb-section-card">
+          <div className="cb-container">
+            <h2 className="cb-section-title cb-section-title--jost">How It Works</h2>
+            <p className="cb-section-subtitle">Sell your house in three simple steps. No fees, no obligation.</p>
+            <HowItWorksCarousel />
+          </div>
+        </div>
+      </section>
+
+      <section className="cb-section cb-section-card-wrap" id="why">
+        <div className="cb-section-card">
+          <div className="cb-container">
+            <h2 className="cb-section-title cb-section-title--jost">Why Choose Seller Stop?</h2>
+            <p className="cb-section-subtitle">We make selling your house simple, fast, and stress-free.</p>
+            <ul className="cb-section-list">
+              <li>No listing, no open houses, no waiting for buyers</li>
+              <li>One conversation, one offer, one closing</li>
+              <li>We buy in any condition—as-is, no repairs</li>
+              <li>Close in as little as 7 days or on your schedule</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="cb-section cb-section-card-wrap" id="benefits">
+        <div className="cb-section-card">
+          <div className="cb-container">
+            <h2 className="cb-section-title">Why Sell to Us for Cash?</h2>
+            <div className="cb-benefits-grid">
+              <div className="cb-benefit-card">
+                <div className="cb-benefit-icon">💰</div>
+                <h3>Fair cash offer</h3>
+                <p>We buy as-is. No lowballing—we make offers based on real market value.</p>
+              </div>
+              <div className="cb-benefit-card">
+                <div className="cb-benefit-icon">⚡</div>
+                <h3>Close in days</h3>
+                <p>Skip months of listing and showings. Close in as little as 7 days if you need to.</p>
+              </div>
+              <div className="cb-benefit-card">
+                <div className="cb-benefit-icon">🔧</div>
+                <h3>No repairs needed</h3>
+                <p>We buy houses in any condition. No need to fix, clean, or stage.</p>
+              </div>
+              <div className="cb-benefit-card">
+                <div className="cb-benefit-icon">📋</div>
+                <h3>No agent fees</h3>
+                <p>No commissions or hidden costs. The offer you see is what you get at closing.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="cb-section cb-section-card-wrap" id="contact">
+        <div className="cb-section-card cb-cta-card">
+          <div className="cb-container">
+            <h2 className="cb-section-title">Ready to Get Your Cash Offer?</h2>
+            <p className="cb-section-subtitle">Tell us about your property. We’ll get back to you with a no-obligation offer within 24 hours.</p>
+            <form className="cb-cta-form" onSubmit={(e) => e.preventDefault()}>
+              <input type="text" placeholder="Your name" required />
+              <input type="email" placeholder="Email" required />
+              <input type="tel" placeholder="Phone" />
+              <input type="text" placeholder="Property address (city/state)" />
+              <button type="submit" className="cb-btn cb-btn-primary cb-btn-lg">Get My Cash Offer</button>
+            </form>
+          </div>
+        </div>
+      </section>
 
       <footer className="cb-footer">
         <div className="cb-container">
