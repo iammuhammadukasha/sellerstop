@@ -46,7 +46,7 @@ export default function CashBuyerPage() {
           <HeroOrbit />
         </div>
         <div className="cb-hero-saas-main">
-          {/* Center hero content â€” glass container */}
+          {/* Center hero content - glass container */}
           <motion.div
             className="cb-hero-saas-center"
             initial={{ opacity: 0, y: 20 }}
@@ -64,7 +64,7 @@ export default function CashBuyerPage() {
               </div>
               <h1 className="cb-hero-saas-headline">Seller Stop Choice</h1>
               <p className="cb-hero-saas-subtitle">
-                We buy your house as-is. No repairs, no cleaning, no hassleâ€”just a fair cash offer and a quick close.
+                We buy your house as-is. No repairs, no cleaning, no hassle—just a fair cash offer and a quick close.
               </p>
               <a href="#contact" className="cb-hero-saas-cta">Get Your Cash Offer</a>
             </div>
@@ -91,7 +91,7 @@ export default function CashBuyerPage() {
               <div className="cb-benefit-card">
                 <BenefitIcon name="cash" />
                 <h3>Fair cash offer</h3>
-                <p>We buy as-is. No lowballingâ€”we make offers based on real market value.</p>
+                <p>We buy as-is. No lowballing—we make offers based on real market value.</p>
               </div>
               <div className="cb-benefit-card">
                 <BenefitIcon name="lightning" />

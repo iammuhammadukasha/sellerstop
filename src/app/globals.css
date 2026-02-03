@@ -532,7 +532,8 @@ body {
   will-change: transform;
 }
 .hero-orbit-card {
-  width: 140px;
+  width: 150px;
+  min-height: 100px;
   padding: 0.75rem;
   border-radius: 18px;
   background: #ffffff;
@@ -541,6 +542,7 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: none;
   transform-origin: center center;
+  box-sizing: border-box;
 }
 .hero-orbit-card-inner {
   display: flex;
@@ -612,14 +614,17 @@ body {
   font-weight: 800;
   margin-right: 1px;
 }
-/* Right cards: house image only, no text */
+/* Right cards: same size as left (house image only) */
 .hero-orbit-card--house {
-  width: 160px;
-  padding: 0.5rem;
+  width: 150px;
+  min-height: 100px;
+  padding: 0.75rem;
 }
 .hero-orbit-card--house .hero-orbit-card-inner {
   padding: 0;
   gap: 0;
+  min-height: 76px;
+  justify-content: center;
 }
 .hero-orbit-house-wrap {
   width: 100%;
@@ -633,7 +638,7 @@ body {
 .hero-orbit-house-img {
   width: 100%;
   height: auto;
-  max-height: 110px;
+  max-height: 88px;
   object-fit: contain;
   display: block;
 }
@@ -1752,17 +1757,22 @@ body {
     transform: scale(0.75);
     transform-origin: center center;
   }
-  .hero-orbit-card {
+  .hero-orbit-card,
+  .hero-orbit-card--house {
     width: 110px;
+    min-height: 78px;
     padding: 0.5rem;
   }
-  .hero-orbit-card--house {
-    width: 120px;
+  .hero-orbit-card--house .hero-orbit-card-inner {
+    min-height: 58px;
   }
   .hero-orbit-avatar-wrap,
   .hero-orbit-money-icon-wrap {
     width: 44px;
     height: 44px;
+  }
+  .hero-orbit-house-img {
+    max-height: 64px;
   }
   .hero-orbit-amount {
     font-size: 0.9rem;
@@ -1793,14 +1803,16 @@ body {
   .hero-orbit-half--right {
     transform: scale(0.6);
   }
-  .hero-orbit-card {
-    width: 90px;
+  .hero-orbit-card,
+  .hero-orbit-card--house {
+    width: 95px;
+    min-height: 68px;
     padding: 0.4rem;
   }
-  .hero-orbit-card--house {
-    width: 100px;
+  .hero-orbit-card--house .hero-orbit-card-inner {
+    min-height: 52px;
   }
   .hero-orbit-house-img {
-    max-height: 80px;
+    max-height: 56px;
   }
 }
