@@ -4,7 +4,8 @@ import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import HeroOrbit from './components/HeroOrbit';
 import HowItWorksCarousel from './components/HowItWorksCarousel';
-import TestimonialEnvelope from './components/TestimonialEnvelope';
+import TestimonialCarousel from './components/TestimonialCarousel';
+import BenefitIcon from './components/BenefitIcon';
 
 export default function CashBuyerPage() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -88,22 +89,22 @@ export default function CashBuyerPage() {
             <h2 className="cb-section-title">Why Sell to Us for Cash?</h2>
             <div className="cb-benefits-grid cb-benefits-grid--row">
               <div className="cb-benefit-card">
-                <div className="cb-benefit-icon">ðŸ’°</div>
+                <BenefitIcon name="cash" />
                 <h3>Fair cash offer</h3>
                 <p>We buy as-is. No lowballingâ€”we make offers based on real market value.</p>
               </div>
               <div className="cb-benefit-card">
-                <div className="cb-benefit-icon">âš¡</div>
+                <BenefitIcon name="lightning" />
                 <h3>Close in days</h3>
                 <p>Skip months of listing and showings. Close in as little as 7 days if you need to.</p>
               </div>
               <div className="cb-benefit-card">
-                <div className="cb-benefit-icon">ðŸ”§</div>
+                <BenefitIcon name="wrench" />
                 <h3>No repairs needed</h3>
                 <p>We buy houses in any condition. No need to fix, clean, or stage.</p>
               </div>
               <div className="cb-benefit-card">
-                <div className="cb-benefit-icon">ðŸ“‹</div>
+                <BenefitIcon name="file" />
                 <h3>No agent fees</h3>
                 <p>No commissions or hidden costs. The offer you see is what you get at closing.</p>
               </div>
@@ -112,7 +113,7 @@ export default function CashBuyerPage() {
         </div>
       </section>
 
-      <TestimonialEnvelope />
+      <TestimonialCarousel />
 
       <section className="cb-section cb-section-card-wrap" id="contact">
         <div className="cb-section-card cb-cta-card">
