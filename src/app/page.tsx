@@ -6,12 +6,13 @@ import HeroOrbit from './components/HeroOrbit';
 import IntegrationsArc from './components/IntegrationsArc';
 import HowItWorksCarousel from './components/HowItWorksCarousel';
 
-function Section({ children, className }: { children: React.ReactNode; className?: string }) {
+function Section({ children, className, id }: { children: React.ReactNode; className?: string; id?: string }) {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
   return (
     <motion.section
       ref={ref}
+      id={id}
       className={className}
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
