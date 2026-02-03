@@ -35,7 +35,6 @@ export default function CashBuyerPage() {
               <a href="#how">How It Works</a>
               <a href="#benefits">Why Sell to Us</a>
               <a href="#testimonials">Testimonials</a>
-              <button type="button" className="cb-btn cb-btn-ghost">Sign in</button>
               <a href="#contact" className="cb-btn cb-btn-hero-primary">Get Your Cash Offer</a>
             </div>
           </div>
