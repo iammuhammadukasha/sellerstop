@@ -1756,7 +1756,7 @@ body {
     transform-origin: center center;
   }
   .hero-orbit-half--right {
-    transform: scale(0.75) translateX(24px);
+    transform: scale(0.75) translateX(-6px);
     transform-origin: center center;
   }
   .hero-orbit-card,
@@ -1807,7 +1807,7 @@ body {
     transform: scale(0.6);
   }
   .hero-orbit-half--right {
-    transform: scale(0.6) translateX(20px);
+    transform: scale(0.6) translateX(-5px);
   }
   .hero-orbit-card,
   .hero-orbit-card--house {
