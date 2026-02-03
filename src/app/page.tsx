@@ -66,7 +66,7 @@ export default function CashBuyerPage() {
               <p className="cb-hero-saas-subtitle">
                 We buy your house as-is. No repairs, no cleaning, no hassleâ€”just a fair cash offer and a quick close.
               </p>
-              <button type="button" className="cb-hero-saas-cta">Get Your Cash Offer</button>
+              <a href="#contact" className="cb-hero-saas-cta">Get Your Cash Offer</a>
             </div>
           </motion.div>
         </div>

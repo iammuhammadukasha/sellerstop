@@ -723,6 +723,7 @@ body {
   cursor: pointer;
   transition: transform 0.2s ease, background 0.2s ease;
   font-family: inherit;
+  text-decoration: none;
 }
 .cb-hero-saas-cta:hover {
   transform: translateY(-2px);
@@ -1530,10 +1531,56 @@ body {
     padding: 0.5rem 0.75rem;
   }
   .cb-hero {
-    min-height: min(100vh, 600px);
+    min-height: min(100vh, 640px);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
   }
+  /* Mobile: center card up, orbit below and overlapping centre card */
   .cb-hero-saas-main {
-    padding: 1.5rem 0.75rem 2rem;
+    order: 1;
+    z-index: 1;
+    justify-content: flex-start;
+    padding: 1.25rem 0.75rem 0.5rem;
+    flex: 0 0 auto;
+  }
+  .cb-hero-orbit-wrap {
+    order: 2;
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 220px;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    z-index: 2;
+    margin-top: -48px;
+    display: block;
+    pointer-events: none;
+  }
+  .cb-hero-orbit-wrap > * {
+    pointer-events: none;
+  }
+  .cb-hero-orbit-wrap .hero-orbit-half--left,
+  .cb-hero-orbit-wrap .hero-orbit-half--right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    min-height: 200px;
+  }
+  .cb-hero-orbit-wrap .hero-orbit-half--left {
+    left: 0;
+    width: 50%;
+  }
+  .cb-hero-orbit-wrap .hero-orbit-half--right {
+    right: 0;
+    left: auto;
+    width: 50%;
+  }
+  .cb-hero-orbit-wrap .hero-orbit-half .hero-orbit-card-wrap {
+    left: 50%;
+    top: 50%;
   }
   .cb-hero-saas-center {
     padding: 0 0.5rem;
@@ -1564,25 +1611,24 @@ body {
   .cb-section-subtitle {
     font-size: 0.95rem;
   }
-  /* How it works: horizontal scroll on small screens */
+  /* How it works: column layout on mobile */
   .cb-how-carousel__viewport {
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
+    overflow: visible;
+    min-height: auto;
     justify-content: flex-start;
-    padding-bottom: 0.5rem;
-  }
-  .cb-how-carousel__viewport::-webkit-scrollbar {
-    height: 6px;
   }
   .cb-how-carousel__track {
+    flex-direction: column;
     flex-wrap: nowrap;
-    padding: 0 0.5rem;
+    width: 100%;
+    gap: 1rem;
+    padding: 0;
   }
   .cb-how-carousel__card {
-    flex: 0 0 min(280px, 85vw);
-    min-width: min(280px, 85vw);
-    width: min(280px, 85vw);
+    flex: 0 0 auto;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
   }
   .cb-benefits-grid--row {
     grid-template-columns: 1fr;
@@ -1667,10 +1713,6 @@ body {
   .cb-section-title {
     font-size: 1.35rem;
   }
-  .cb-how-carousel__card {
-    flex: 0 0 min(260px, 88vw);
-    min-width: min(260px, 88vw);
-  }
   .cb-step {
     padding: 1.25rem;
   }
@@ -1733,8 +1775,17 @@ body {
   }
 }
 @media (max-width: 480px) {
+  .cb-hero-saas-main {
+    padding: 1rem 0.5rem 0.25rem;
+  }
   .cb-hero-orbit-wrap {
-    opacity: 0.9;
+    min-height: 200px;
+    margin-top: -40px;
+    opacity: 0.95;
+  }
+  .cb-hero-orbit-wrap .hero-orbit-half--left,
+  .cb-hero-orbit-wrap .hero-orbit-half--right {
+    min-height: 180px;
   }
   .hero-orbit-half--left {
     transform: scale(0.6);
