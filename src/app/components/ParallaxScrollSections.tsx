@@ -14,14 +14,22 @@ export default function ParallaxScrollSections() {
     offset: ['start start', 'end end'],
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ['0vw', '-300vw']);
+  // Each card overlays the previous; scroll drives each card's x independently.
+  // Card 1: centered [0, 0.25], then off left
+  const x1 = useTransform(scrollYProgress, [0, 0.25, 1], ['0%', '-100%', '-100%']);
+  // Card 2: off right, then centered [0.25, 0.5], then off left
+  const x2 = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], ['100%', '100%', '0%', '-100%', '-100%']);
+  // Card 3: off right until 0.5, centered [0.5, 0.75], then off left
+  const x3 = useTransform(scrollYProgress, [0, 0.5, 0.75, 1], ['100%', '100%', '0%', '-100%']);
+  // Card 4: off right until 0.75, then centered
+  const x4 = useTransform(scrollYProgress, [0, 0.75, 1], ['100%', '100%', '0%']);
 
   return (
     <div ref={containerRef} className="cb-parallax-wrap" style={{ height: `${CARD_COUNT * 100}vh` }}>
       <div className="cb-parallax-viewport">
-        <motion.div className="cb-parallax-track" style={{ x }}>
+        <div className="cb-parallax-stack">
           {/* Card 1: How It Works */}
-          <div className="cb-parallax-card">
+          <motion.div className="cb-parallax-card cb-parallax-card--overlay" style={{ x: x1, zIndex: 1 }}>
             <div className="cb-parallax-card-inner cb-section-card cb-how-card">
               <div className="cb-container">
                 <h2 className="cb-section-title cb-section-title--jost">How It Works</h2>
@@ -31,10 +39,10 @@ export default function ParallaxScrollSections() {
                 <HowItWorksCarousel />
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Card 2: Why Choose Us */}
-          <div className="cb-parallax-card">
+          <motion.div className="cb-parallax-card cb-parallax-card--overlay" style={{ x: x2, zIndex: 2 }}>
             <div className="cb-parallax-card-inner cb-section-card">
               <div className="cb-container">
                 <h2 className="cb-section-title cb-section-title--jost">Why Choose Seller Stop?</h2>
@@ -49,10 +57,10 @@ export default function ParallaxScrollSections() {
                 </ul>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Card 3: Benefits */}
-          <div className="cb-parallax-card">
+          <motion.div className="cb-parallax-card cb-parallax-card--overlay" style={{ x: x3, zIndex: 3 }}>
             <div className="cb-parallax-card-inner cb-section-card">
               <div className="cb-container">
                 <h2 className="cb-section-title">Why Sell to Us for Cash?</h2>
@@ -80,10 +88,10 @@ export default function ParallaxScrollSections() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Card 4: CTA */}
-          <div className="cb-parallax-card">
+          <motion.div className="cb-parallax-card cb-parallax-card--overlay" style={{ x: x4, zIndex: 4 }}>
             <div className="cb-parallax-card-inner cb-section-card cb-cta-card">
               <div className="cb-container">
                 <h2 className="cb-section-title">Ready to Get Your Cash Offer?</h2>
@@ -101,8 +109,8 @@ export default function ParallaxScrollSections() {
                 </form>
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
