@@ -1195,8 +1195,19 @@ body {
   margin-top: 0.5rem;
 }
 
-/* Parallax scroll sections (4 cards overlay; slide in from right / roll back to left) */
-.cb-parallax-wrap {
+/* Parallax: sections 1 & 2 normal; sections 3 & 4 overlay each other */
+.cb-parallax-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+}
+.cb-parallax-section--normal {
+  width: 100%;
+}
+.cb-parallax-overlay-wrap {
   position: relative;
   width: 100%;
 }
@@ -1221,6 +1232,11 @@ body {
   justify-content: center;
   padding: 2rem 1.5rem;
   box-sizing: border-box;
+}
+.cb-parallax-card--base {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .cb-parallax-card--overlay {
   position: absolute;
