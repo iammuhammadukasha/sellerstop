@@ -961,26 +961,24 @@ body {
   line-height: 1.55;
 }
 
-/* How It Works – left-to-right loop carousel (one card in center, cards inside section) */
+/* How It Works – static cards (no sliding) */
 .cb-how-carousel {
   margin-top: 1rem;
   width: 100%;
-  overflow: hidden;
 }
 .cb-how-carousel__viewport {
   position: relative;
   width: 100%;
-  overflow: hidden;
   min-height: 220px;
+  display: flex;
+  justify-content: center;
 }
 .cb-how-carousel__track {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   gap: 24px;
-  margin-left: calc(50% - 160px);
   width: max-content;
-  will-change: transform;
 }
 .cb-how-carousel__card {
   flex: 0 0 320px;
