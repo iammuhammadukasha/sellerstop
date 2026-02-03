@@ -1,26 +1,9 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import HeroOrbit from './components/HeroOrbit';
-import HowItWorksCarousel from './components/HowItWorksCarousel';
-
-function Section({ children, className, id }: { children: React.ReactNode; className?: string; id?: string }) {
-  const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-  return (
-    <motion.section
-      ref={ref}
-      id={id}
-      className={className}
-      initial={{ opacity: 0, y: 40 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-    >
-      {children}
-    </motion.section>
-  );
-}
+import ParallaxScrollSections from './components/ParallaxScrollSections';
 
 export default function CashBuyerPage() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -88,93 +71,7 @@ export default function CashBuyerPage() {
       </header>
       </div>
 
-      <Section className="cb-section cb-how" id="how">
-        <div className="cb-section-card cb-how-card">
-          <div className="cb-container">
-            <h2 className="cb-section-title cb-section-title--jost">How It Works</h2>
-            <p className="cb-section-subtitle">Sell your house in three simple steps. No fees, no obligation.</p>
-            <HowItWorksCarousel />
-          </div>
-        </div>
-      </Section>
-
-      <Section className="cb-section" id="section-3">
-        {/* Third section – design TBD (you’ll specify) */}
-        <div className="cb-container" />
-      </Section>
-
-      <Section className="cb-section cb-benefits" id="benefits">
-        <div className="cb-container">
-          <h2 className="cb-section-title">Why Sell to Us for Cash?</h2>
-          <div className="cb-benefits-grid">
-            <motion.div
-              className="cb-benefit-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              <div className="cb-benefit-icon">💰</div>
-              <h3>Fair cash offer</h3>
-              <p>We buy as-is. No lowballing—we make offers based on real market value.</p>
-            </motion.div>
-            <motion.div
-              className="cb-benefit-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="cb-benefit-icon">⚡</div>
-              <h3>Close in days</h3>
-              <p>Skip months of listing and showings. Close in as little as 7 days if you need to.</p>
-            </motion.div>
-            <motion.div
-              className="cb-benefit-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="cb-benefit-icon">🔧</div>
-              <h3>No repairs needed</h3>
-              <p>We buy houses in any condition. No need to fix, clean, or stage.</p>
-            </motion.div>
-            <motion.div
-              className="cb-benefit-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-            >
-              <div className="cb-benefit-icon">📋</div>
-              <h3>No agent fees</h3>
-              <p>No commissions or hidden costs. The offer you see is what you get at closing.</p>
-            </motion.div>
-          </div>
-        </div>
-      </Section>
-
-      <Section className="cb-section cb-cta" id="contact">
-        <div className="cb-container">
-          <motion.div
-            className="cb-cta-card"
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <h2>Ready to Get Your Cash Offer?</h2>
-            <p>Tell us about your property. We’ll get back to you with a no-obligation offer within 24 hours.</p>
-            <form className="cb-cta-form" onSubmit={(e) => e.preventDefault()}>
-              <input type="text" placeholder="Your name" required />
-              <input type="email" placeholder="Email" required />
-              <input type="tel" placeholder="Phone" />
-              <input type="text" placeholder="Property address (city/state)" />
-              <button type="submit" className="cb-btn cb-btn-primary cb-btn-lg">Get My Cash Offer</button>
-            </form>
-          </motion.div>
-        </div>
-      </Section>
+      <ParallaxScrollSections />
 
       <footer className="cb-footer">
         <div className="cb-container">
