@@ -1180,8 +1180,16 @@ body {
   transform: translateY(-2px);
 }
 .cb-benefit-icon {
-  font-size: 2rem;
   margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--cb-accent);
+}
+.cb-benefit-icon svg {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
 }
 .cb-benefit-card h3 {
   font-size: 1.1rem;
@@ -1194,67 +1202,46 @@ body {
   line-height: 1.5;
 }
 
-/* Testimonials – envelope + card that comes out on scroll */
-.cb-testimonial-envelope .cb-section-title {
-  margin-bottom: 2rem;
+/* Testimonials – one card at a time, 2s auto carousel, minimal shadow */
+.cb-testimonial-carousel .cb-section-title {
+  margin-bottom: 1.5rem;
 }
-.cb-envelope-wrap {
+.cb-testimonial-carousel-viewport {
   position: relative;
-  min-height: 320px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 1rem;
-}
-.cb-envelope-svg-wrap {
-  width: 200px;
-  flex-shrink: 0;
-  margin-bottom: -40px;
-  position: relative;
-  z-index: 0;
-}
-.cb-envelope-svg {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
-}
-.cb-envelope-card {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 480px;
-  margin: 0 auto;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(201, 162, 39, 0.2);
   overflow: hidden;
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.cb-envelope-card-inner {
-  padding: 2rem 1.75rem 3.5rem;
-  min-height: 140px;
+.cb-testimonial-carousel-card {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 2rem 1.75rem;
+  background: var(--cb-bg-card);
+  border-radius: var(--cb-radius);
+  border: 1px solid rgba(201, 162, 39, 0.15);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
-.cb-envelope-card-content .cb-testimonial-quote {
+.cb-testimonial-carousel-card .cb-testimonial-quote {
   font-size: 1.05rem;
   color: var(--cb-text);
   line-height: 1.65;
   margin-bottom: 1rem;
   font-style: italic;
 }
-.cb-envelope-card-content .cb-testimonial-author {
+.cb-testimonial-carousel-card .cb-testimonial-author {
   font-size: 0.9rem;
   color: var(--cb-text-muted);
 }
-.cb-envelope-card-dots {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
+.cb-testimonial-carousel-dots {
   display: flex;
+  justify-content: center;
   gap: 0.5rem;
+  margin-top: 1.25rem;
 }
-.cb-envelope-dot {
+.cb-testimonial-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -1264,42 +1251,12 @@ body {
   padding: 0;
   transition: background 0.2s, transform 0.2s;
 }
-.cb-envelope-dot:hover {
+.cb-testimonial-dot:hover {
   background: rgba(201, 162, 39, 0.6);
 }
-.cb-envelope-dot--active {
+.cb-testimonial-dot--active {
   background: var(--cb-accent);
   transform: scale(1.2);
-}
-.cb-envelope-card-arrows {
-  position: absolute;
-  bottom: 0.85rem;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 0.5rem;
-  pointer-events: none;
-}
-.cb-envelope-arrow {
-  pointer-events: auto;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid rgba(201, 162, 39, 0.4);
-  background: #fff;
-  color: var(--cb-text);
-  font-size: 1.25rem;
-  line-height: 1;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s, border-color 0.2s;
-}
-.cb-envelope-arrow:hover {
-  background: rgba(201, 162, 39, 0.1);
-  border-color: var(--cb-accent);
 }
 
 /* CTA */
