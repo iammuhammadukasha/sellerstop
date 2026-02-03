@@ -7,6 +7,9 @@ import HowItWorksCarousel from './components/HowItWorksCarousel';
 import TestimonialCarousel from './components/TestimonialCarousel';
 import BenefitIcon from './components/BenefitIcon';
 
+const scrollViewport = { once: true, amount: 0.12 };
+const scrollTransition = { duration: 0.55, ease: 'easeOut' };
+
 export default function CashBuyerPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const [logoError, setLogoError] = useState(false);
@@ -74,17 +77,29 @@ export default function CashBuyerPage() {
       </div>
 
       <section className="cb-section cb-section-card-wrap" id="how">
-        <div className="cb-section-card">
+        <motion.div
+          className="cb-section-card"
+          initial={{ opacity: 0, x: 72 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={scrollViewport}
+          transition={scrollTransition}
+        >
           <div className="cb-container">
             <h2 className="cb-section-title cb-section-title--jost">How It Works</h2>
             <p className="cb-section-subtitle">Sell your house in three simple steps. No fees, no obligation.</p>
             <HowItWorksCarousel />
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <section className="cb-section cb-section-card-wrap" id="benefits">
-        <div className="cb-section-card">
+        <motion.div
+          className="cb-section-card"
+          initial={{ opacity: 0, x: -72 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={scrollViewport}
+          transition={scrollTransition}
+        >
           <div className="cb-container">
             <h2 className="cb-section-title">Why Sell to Us for Cash?</h2>
             <div className="cb-benefits-grid cb-benefits-grid--row">
@@ -110,13 +125,26 @@ export default function CashBuyerPage() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
-      <TestimonialCarousel />
+      <motion.div
+        initial={{ opacity: 0, x: 72 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={scrollViewport}
+        transition={scrollTransition}
+      >
+        <TestimonialCarousel />
+      </motion.div>
 
       <section className="cb-section cb-section-card-wrap cb-cta-section" id="contact">
-        <div className="cb-section-card cb-cta-two-col">
+        <motion.div
+          className="cb-section-card cb-cta-two-col"
+          initial={{ opacity: 0, x: -72 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={scrollViewport}
+          transition={scrollTransition}
+        >
           <div className="cb-container cb-cta-grid">
             <div className="cb-cta-col cb-cta-info">
               <h2 className="cb-cta-heading">Get Your Cash Offer</h2>
@@ -137,14 +165,20 @@ export default function CashBuyerPage() {
               </form>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
-      <footer className="cb-footer">
+      <motion.footer
+        className="cb-footer"
+        initial={{ opacity: 0, x: 72 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={scrollViewport}
+        transition={scrollTransition}
+      >
         <div className="cb-container">
           <p>Seller Stop Choice © 2026 All rights reserved.</p>
         </div>
-      </footer>
+      </motion.footer>
     </div>
   );
 }
