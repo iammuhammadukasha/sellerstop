@@ -81,26 +81,11 @@ export default function CashBuyerPage() {
         </div>
       </section>
 
-      <section className="cb-section cb-section-card-wrap" id="why">
-        <div className="cb-section-card">
-          <div className="cb-container">
-            <h2 className="cb-section-title cb-section-title--jost">Why Choose Seller Stop?</h2>
-            <p className="cb-section-subtitle">We make selling your house simple, fast, and stress-free.</p>
-            <ul className="cb-section-list">
-              <li>No listing, no open houses, no waiting for buyers</li>
-              <li>One conversation, one offer, one closing</li>
-              <li>We buy in any condition—as-is, no repairs</li>
-              <li>Close in as little as 7 days or on your schedule</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
       <section className="cb-section cb-section-card-wrap" id="benefits">
         <div className="cb-section-card">
           <div className="cb-container">
             <h2 className="cb-section-title">Why Sell to Us for Cash?</h2>
-            <div className="cb-benefits-grid">
+            <div className="cb-benefits-grid cb-benefits-grid--row">
               <div className="cb-benefit-card">
                 <div className="cb-benefit-icon">💰</div>
                 <h3>Fair cash offer</h3>
@@ -120,6 +105,29 @@ export default function CashBuyerPage() {
                 <div className="cb-benefit-icon">📋</div>
                 <h3>No agent fees</h3>
                 <p>No commissions or hidden costs. The offer you see is what you get at closing.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="cb-section cb-section-card-wrap" id="testimonials">
+        <div className="cb-section-card">
+          <div className="cb-container">
+            <h2 className="cb-section-title">What Our Sellers Say</h2>
+            <p className="cb-section-subtitle">Real stories from homeowners who chose a simple, stress-free sale.</p>
+            <div className="cb-testimonials">
+              <div className="cb-testimonial-card">
+                <p className="cb-testimonial-quote">“They gave me a fair offer and we closed in 10 days. No repairs, no showings—exactly what I needed.”</p>
+                <p className="cb-testimonial-author">— Maria L., Phoenix</p>
+              </div>
+              <div className="cb-testimonial-card">
+                <p className="cb-testimonial-quote">“I was relocating for work and needed to sell fast. Seller Stop made it hassle-free and transparent.”</p>
+                <p className="cb-testimonial-author">— James K., Dallas</p>
+              </div>
+              <div className="cb-testimonial-card">
+                <p className="cb-testimonial-quote">“No agent fees, no staging, no waiting. The offer was clear and the process was straightforward.”</p>
+                <p className="cb-testimonial-author">— Sandra T., Atlanta</p>
               </div>
             </div>
           </div>
