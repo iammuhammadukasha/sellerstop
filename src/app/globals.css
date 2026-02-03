@@ -1762,14 +1762,14 @@ body {
   .hero-orbit-card,
   .hero-orbit-card--house {
     width: 110px;
-    height: 78px;
-    min-height: 78px;
+    height: 100px;
+    min-height: 100px;
     padding: 0.5rem;
     box-sizing: border-box;
   }
   .hero-orbit-card-inner,
   .hero-orbit-card--house .hero-orbit-card-inner {
-    min-height: 58px;
+    min-height: 72px;
     height: 100%;
   }
   .hero-orbit-avatar-wrap,
@@ -1778,7 +1778,7 @@ body {
     height: 44px;
   }
   .hero-orbit-house-img {
-    max-height: 64px;
+    max-height: 72px;
   }
   .hero-orbit-amount {
     font-size: 0.9rem;
@@ -1812,17 +1812,17 @@ body {
   .hero-orbit-card,
   .hero-orbit-card--house {
     width: 95px;
-    height: 68px;
-    min-height: 68px;
+    height: 88px;
+    min-height: 88px;
     padding: 0.4rem;
     box-sizing: border-box;
   }
   .hero-orbit-card-inner,
   .hero-orbit-card--house .hero-orbit-card-inner {
-    min-height: 52px;
+    min-height: 64px;
     height: 100%;
   }
   .hero-orbit-house-img {
-    max-height: 56px;
+    max-height: 64px;
   }
 }
