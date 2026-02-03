@@ -3,6 +3,18 @@
 import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 
+function useMobile(maxWidth = 768) {
+  const [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${maxWidth}px)`);
+    const update = () => setMobile(mql.matches);
+    update();
+    mql.addEventListener('change', update);
+    return () => mql.removeEventListener('change', update);
+  }, [maxWidth]);
+  return mobile;
+}
+
 const ORBIT_RADIUS_X = 160;
 const ORBIT_RADIUS_Y = 120;
 const PAUSE_AT_CENTER_MS = 1600;
@@ -48,6 +60,7 @@ function OrbitCard({
   radiusX,
   radiusY,
   side,
+  isMobile,
 }: {
   item: { id: number; angleOffset: number } & (
     | { amount: number }
@@ -57,6 +70,7 @@ function OrbitCard({
   radiusX: number;
   radiusY: number;
   side: 'left' | 'right';
+  isMobile: boolean;
 }) {
   const angle = useTransform(orbitTime, (t) => (t + item.angleOffset) * DEG);
   const x = useTransform(angle, (a) => Math.cos(a) * radiusX);
@@ -65,8 +79,9 @@ function OrbitCard({
     angle,
     (a) => (side === 'left' ? (Math.cos(a) + 1) / 2 : (-Math.cos(a) + 1) / 2)
   );
-  const scale = useTransform(focus, (f) => 0.88 + 0.22 * f);
+  const scale = useTransform(focus, (f) => (isMobile ? 1 : 0.88 + 0.22 * f));
   const opacity = useTransform(focus, (f) => 0.55 + 0.45 * f);
+  const zIndex = useTransform(focus, (f) => 1 + Math.round(f * 100));
   const isMoney = 'amount' in item;
   const isHouse = 'image' in item;
 
@@ -74,7 +89,7 @@ function OrbitCard({
     <div className="hero-orbit-card-wrap">
       <motion.div
         className={`hero-orbit-card ${isHouse ? 'hero-orbit-card--house' : ''}`}
-        style={{ x, y, scale, opacity }}
+        style={{ x, y, scale, opacity, zIndex }}
       >
         <div className="hero-orbit-card-inner hero-orbit-float">
           {isMoney ? (
@@ -100,6 +115,7 @@ function OrbitCard({
 
 export default function HeroOrbit() {
   const [mounted, setMounted] = useState(false);
+  const isMobile = useMobile(768);
   const orbitTime = useMotionValue(0);
 
   useEffect(() => {
@@ -147,6 +163,7 @@ export default function HeroOrbit() {
             radiusX={ORBIT_RADIUS_X}
             radiusY={ORBIT_RADIUS_Y}
             side="left"
+            isMobile={isMobile}
           />
         ))}
       </div>
@@ -159,6 +176,7 @@ export default function HeroOrbit() {
             radiusX={ORBIT_RADIUS_X}
             radiusY={ORBIT_RADIUS_Y}
             side="right"
+            isMobile={isMobile}
           />
         ))}
       </div>
