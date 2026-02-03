@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import HeroOrbit from './components/HeroOrbit';
 import HowItWorksCarousel from './components/HowItWorksCarousel';
+import TestimonialEnvelope from './components/TestimonialEnvelope';
 
 export default function CashBuyerPage() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -44,7 +45,7 @@ export default function CashBuyerPage() {
           <HeroOrbit />
         </div>
         <div className="cb-hero-saas-main">
-          {/* Center hero content — glass container */}
+          {/* Center hero content â€” glass container */}
           <motion.div
             className="cb-hero-saas-center"
             initial={{ opacity: 0, y: 20 }}
@@ -62,7 +63,7 @@ export default function CashBuyerPage() {
               </div>
               <h1 className="cb-hero-saas-headline">Seller Stop Choice</h1>
               <p className="cb-hero-saas-subtitle">
-                We buy your house as-is. No repairs, no cleaning, no hassle—just a fair cash offer and a quick close.
+                We buy your house as-is. No repairs, no cleaning, no hassleâ€”just a fair cash offer and a quick close.
               </p>
               <button type="button" className="cb-hero-saas-cta">Get Your Cash Offer</button>
             </div>
@@ -87,22 +88,22 @@ export default function CashBuyerPage() {
             <h2 className="cb-section-title">Why Sell to Us for Cash?</h2>
             <div className="cb-benefits-grid cb-benefits-grid--row">
               <div className="cb-benefit-card">
-                <div className="cb-benefit-icon">💰</div>
+                <div className="cb-benefit-icon">ðŸ’°</div>
                 <h3>Fair cash offer</h3>
-                <p>We buy as-is. No lowballing—we make offers based on real market value.</p>
+                <p>We buy as-is. No lowballingâ€”we make offers based on real market value.</p>
               </div>
               <div className="cb-benefit-card">
-                <div className="cb-benefit-icon">⚡</div>
+                <div className="cb-benefit-icon">âš¡</div>
                 <h3>Close in days</h3>
                 <p>Skip months of listing and showings. Close in as little as 7 days if you need to.</p>
               </div>
               <div className="cb-benefit-card">
-                <div className="cb-benefit-icon">🔧</div>
+                <div className="cb-benefit-icon">ðŸ”§</div>
                 <h3>No repairs needed</h3>
                 <p>We buy houses in any condition. No need to fix, clean, or stage.</p>
               </div>
               <div className="cb-benefit-card">
-                <div className="cb-benefit-icon">📋</div>
+                <div className="cb-benefit-icon">ðŸ“‹</div>
                 <h3>No agent fees</h3>
                 <p>No commissions or hidden costs. The offer you see is what you get at closing.</p>
               </div>
@@ -111,34 +112,13 @@ export default function CashBuyerPage() {
         </div>
       </section>
 
-      <section className="cb-section cb-section-card-wrap" id="testimonials">
-        <div className="cb-section-card">
-          <div className="cb-container">
-            <h2 className="cb-section-title">What Our Sellers Say</h2>
-            <p className="cb-section-subtitle">Real stories from homeowners who chose a simple, stress-free sale.</p>
-            <div className="cb-testimonials">
-              <div className="cb-testimonial-card">
-                <p className="cb-testimonial-quote">“They gave me a fair offer and we closed in 10 days. No repairs, no showings—exactly what I needed.”</p>
-                <p className="cb-testimonial-author">— Maria L., Phoenix</p>
-              </div>
-              <div className="cb-testimonial-card">
-                <p className="cb-testimonial-quote">“I was relocating for work and needed to sell fast. Seller Stop made it hassle-free and transparent.”</p>
-                <p className="cb-testimonial-author">— James K., Dallas</p>
-              </div>
-              <div className="cb-testimonial-card">
-                <p className="cb-testimonial-quote">“No agent fees, no staging, no waiting. The offer was clear and the process was straightforward.”</p>
-                <p className="cb-testimonial-author">— Sandra T., Atlanta</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TestimonialEnvelope />
 
       <section className="cb-section cb-section-card-wrap" id="contact">
         <div className="cb-section-card cb-cta-card">
           <div className="cb-container">
             <h2 className="cb-section-title">Ready to Get Your Cash Offer?</h2>
-            <p className="cb-section-subtitle">Tell us about your property. We’ll get back to you with a no-obligation offer within 24 hours.</p>
+            <p className="cb-section-subtitle">Tell us about your property. We'll get back to you with a no-obligation offer within 24 hours.</p>
             <form className="cb-cta-form" onSubmit={(e) => e.preventDefault()}>
               <input type="text" placeholder="Your name" required />
               <input type="email" placeholder="Email" required />
