@@ -19,7 +19,7 @@ export default function CashBuyerPage() {
       <div className="cb-hero-card">
         <nav className="cb-nav cb-nav-hero cb-nav-coreshift">
           <div className="cb-container cb-nav-inner">
-            <a href="#" className="cb-logo-hero cb-logo-img-wrap" aria-label="Seller Stop Choice">
+            <a href="#home" className="cb-logo-hero cb-logo-img-wrap" aria-label="Seller Stop Choice">
               {logoError ? (
                 <span className="cb-logo-text">Seller Stop Choice</span>
               ) : (
@@ -32,12 +32,11 @@ export default function CashBuyerPage() {
               )}
             </a>
             <div className="cb-nav-links-hero">
-              <a href="#product">Product</a>
-              <a href="#features">Features</a>
-              <a href="#pricing">Pricing</a>
-              <a href="#resources">Resources</a>
+              <a href="#how">How It Works</a>
+              <a href="#benefits">Why Sell to Us</a>
+              <a href="#testimonials">Testimonials</a>
               <button type="button" className="cb-btn cb-btn-ghost">Sign in</button>
-              <button type="button" className="cb-btn cb-btn-hero-primary">Request a Demo</button>
+              <a href="#contact" className="cb-btn cb-btn-hero-primary">Get Your Cash Offer</a>
             </div>
           </div>
         </nav>
