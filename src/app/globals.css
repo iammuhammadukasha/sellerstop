@@ -543,6 +543,7 @@ body {
   box-shadow: none;
   transform-origin: center center;
   box-sizing: border-box;
+  overflow: hidden;
 }
 .hero-orbit-card-inner {
   display: flex;
@@ -1573,6 +1574,7 @@ body {
     bottom: 0;
     height: 100%;
     min-height: 200px;
+    isolation: isolate;
   }
   .cb-hero-orbit-wrap .hero-orbit-half--left {
     left: 0;
@@ -1747,7 +1749,7 @@ body {
   }
 }
 
-/* Hero orbit: scale down on small viewports */
+/* Hero orbit: same-size cards on mobile for exact overlap; scale down on small viewports */
 @media (max-width: 768px) {
   .hero-orbit-half--left {
     transform: scale(0.75);
@@ -1760,11 +1762,15 @@ body {
   .hero-orbit-card,
   .hero-orbit-card--house {
     width: 110px;
+    height: 78px;
     min-height: 78px;
     padding: 0.5rem;
+    box-sizing: border-box;
   }
+  .hero-orbit-card-inner,
   .hero-orbit-card--house .hero-orbit-card-inner {
     min-height: 58px;
+    height: 100%;
   }
   .hero-orbit-avatar-wrap,
   .hero-orbit-money-icon-wrap {
@@ -1806,11 +1812,15 @@ body {
   .hero-orbit-card,
   .hero-orbit-card--house {
     width: 95px;
+    height: 68px;
     min-height: 68px;
     padding: 0.4rem;
+    box-sizing: border-box;
   }
+  .hero-orbit-card-inner,
   .hero-orbit-card--house .hero-orbit-card-inner {
     min-height: 52px;
+    height: 100%;
   }
   .hero-orbit-house-img {
     max-height: 56px;
