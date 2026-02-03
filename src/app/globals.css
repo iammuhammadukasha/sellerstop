@@ -27,11 +27,11 @@ body {
   --cb-text: #1f2937;
   --cb-text-muted: #6b7280;
   --cb-radius: 12px;
-  --cb-container: min(1200px, 100% - 2rem);
   margin: 0;
   background: var(--cb-bg);
   color: var(--cb-text);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Hero + Nav card (navbar and hero inside one card) */
@@ -60,9 +60,10 @@ body {
 }
 
 .cb-container {
-  width: var(--cb-container);
+  width: 100%;
+  max-width: min(1200px, 100% - 2rem);
   margin-inline: auto;
-  padding-inline: 1rem;
+  padding-inline: clamp(1rem, 4vw, 1.5rem);
 }
 
 /* Nav */
@@ -1459,14 +1460,296 @@ body {
   color: var(--cb-text-muted);
 }
 
+/* ========== RESPONSIVE ========== */
+
+/* Tablet and below */
+@media (max-width: 992px) {
+  .cb-hero-card {
+    margin: 1.5rem 1rem 1rem;
+  }
+  .cb-nav-hero {
+    width: calc(100% - 2rem);
+    padding: 0.6rem 1rem;
+  }
+  .cb-nav-links-hero {
+    gap: 1.25rem;
+  }
+  .cb-nav-links-hero a {
+    font-size: 0.9rem;
+  }
+  .cb-hero-saas-glass {
+    padding: 2rem 2rem;
+  }
+  .cb-hero-saas-headline {
+    font-size: clamp(1.75rem, 4.5vw, 2.25rem);
+  }
+  .cb-section-card-wrap .cb-section-card {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .cb-section-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+  .cb-testimonial-carousel-card {
+    max-width: 100%;
+    padding: 2rem 1.5rem;
+  }
+  .cb-testimonial-carousel-card .cb-testimonial-quote {
+    font-size: 1.1rem;
+  }
+  .cb-cta-grid {
+    gap: 2rem;
+  }
+  .cb-cta-heading {
+    font-size: 1.5rem;
+  }
+}
+
+/* Hide nav links on smaller tablets / large phones, show logo + primary CTA only */
 @media (max-width: 768px) {
   .cb-nav-links {
     display: none;
+  }
+  .cb-nav-links-hero {
+    display: none;
+  }
+  .cb-hero-card .cb-nav-inner {
+    justify-content: center;
   }
   .cb-hero-cta {
     flex-direction: column;
   }
   .cb-btn-lg {
     width: 100%;
+  }
+  .cb-hero-card {
+    margin: 1rem 0.75rem 0.75rem;
+  }
+  .cb-nav-hero {
+    width: calc(100% - 1.5rem);
+    padding: 0.5rem 0.75rem;
+  }
+  .cb-hero {
+    min-height: min(100vh, 600px);
+  }
+  .cb-hero-saas-main {
+    padding: 1.5rem 0.75rem 2rem;
+  }
+  .cb-hero-saas-center {
+    padding: 0 0.5rem;
+  }
+  .cb-hero-saas-glass {
+    padding: 1.75rem 1.5rem;
+    border-radius: 20px;
+  }
+  .cb-hero-saas-headline {
+    font-size: 1.65rem;
+  }
+  .cb-hero-saas-subtitle {
+    font-size: 0.95rem;
+  }
+  .cb-hero-saas-cta {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.85rem 1.25rem;
+  }
+  .cb-section {
+    padding: 1.75rem 0.5rem 2rem;
+  }
+  .cb-section-card {
+    margin-left: 0.75rem !important;
+    margin-right: 0.75rem !important;
+    padding: 2rem 1.25rem !important;
+  }
+  .cb-section-subtitle {
+    font-size: 0.95rem;
+  }
+  /* How it works: horizontal scroll on small screens */
+  .cb-how-carousel__viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    padding-bottom: 0.5rem;
+  }
+  .cb-how-carousel__viewport::-webkit-scrollbar {
+    height: 6px;
+  }
+  .cb-how-carousel__track {
+    flex-wrap: nowrap;
+    padding: 0 0.5rem;
+  }
+  .cb-how-carousel__card {
+    flex: 0 0 min(280px, 85vw);
+    min-width: min(280px, 85vw);
+    width: min(280px, 85vw);
+  }
+  .cb-benefits-grid--row {
+    grid-template-columns: 1fr;
+  }
+  .cb-benefit-card {
+    padding: 1.5rem;
+  }
+  .cb-testimonial-carousel .cb-section-card {
+    min-height: 320px;
+  }
+  .cb-testimonial-carousel-viewport {
+    min-height: 200px;
+  }
+  .cb-testimonial-carousel-card {
+    padding: 1.75rem 1.25rem;
+  }
+  .cb-testimonial-carousel-card .cb-testimonial-quote {
+    font-size: 1rem;
+  }
+  .cb-testimonial-carousel-dots {
+    margin-top: 1rem;
+  }
+  .cb-cta-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+  .cb-cta-two-col {
+    padding: 2rem 1rem !important;
+  }
+  .cb-cta-form-wrap {
+    padding: 1.25rem;
+  }
+  .cb-cta-form input {
+    min-height: 44px;
+  }
+  .cb-cta-form button {
+    min-height: 48px;
+  }
+  .cb-footer {
+    padding: 1rem 0.75rem;
+  }
+  .cb-footer p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .cb-hero-card {
+    margin: 0.75rem 0.5rem 0.5rem;
+  }
+  .cb-nav-hero {
+    width: calc(100% - 1rem);
+  }
+  .cb-logo-img {
+    height: 30px;
+  }
+  .cb-logo-text {
+    font-size: 1rem;
+  }
+  .cb-hero-saas-glass {
+    padding: 1.5rem 1.25rem;
+  }
+  .cb-hero-saas-headline {
+    font-size: 1.5rem;
+  }
+  .cb-hero-saas-icon-wrap--dollar {
+    width: 56px;
+    height: 56px;
+  }
+  .cb-hero-saas-icon-wrap--dollar svg {
+    width: 40px;
+    height: 40px;
+  }
+  .cb-section {
+    padding: 1.5rem 0.5rem 1.75rem;
+  }
+  .cb-section-card {
+    padding: 1.5rem 1rem !important;
+    border-radius: 16px;
+  }
+  .cb-section-title {
+    font-size: 1.35rem;
+  }
+  .cb-how-carousel__card {
+    flex: 0 0 min(260px, 88vw);
+    min-width: min(260px, 88vw);
+  }
+  .cb-step {
+    padding: 1.25rem;
+  }
+  .cb-step-num {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1rem;
+  }
+  .cb-benefit-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+  .cb-testimonial-carousel .cb-section-card {
+    min-height: 280px;
+  }
+  .cb-testimonial-carousel-viewport {
+    min-height: 180px;
+  }
+  .cb-cta-heading {
+    font-size: 1.35rem;
+  }
+  .cb-cta-desc {
+    font-size: 0.9rem;
+  }
+  .cb-cta-contact {
+    font-size: 0.9rem;
+  }
+}
+
+/* Hero orbit: scale down on small viewports */
+@media (max-width: 768px) {
+  .hero-orbit-half--left {
+    transform: scale(0.75);
+    transform-origin: center center;
+  }
+  .hero-orbit-half--right {
+    transform: scale(0.75);
+    transform-origin: center center;
+  }
+  .hero-orbit-card {
+    width: 110px;
+    padding: 0.5rem;
+  }
+  .hero-orbit-card--house {
+    width: 120px;
+  }
+  .hero-orbit-avatar-wrap,
+  .hero-orbit-money-icon-wrap {
+    width: 44px;
+    height: 44px;
+  }
+  .hero-orbit-amount {
+    font-size: 0.9rem;
+  }
+  .hero-orbit-name {
+    font-size: 0.7rem;
+  }
+  .hero-orbit-role {
+    font-size: 0.65rem;
+  }
+}
+@media (max-width: 480px) {
+  .cb-hero-orbit-wrap {
+    opacity: 0.9;
+  }
+  .hero-orbit-half--left {
+    transform: scale(0.6);
+  }
+  .hero-orbit-half--right {
+    transform: scale(0.6);
+  }
+  .hero-orbit-card {
+    width: 90px;
+    padding: 0.4rem;
+  }
+  .hero-orbit-card--house {
+    width: 100px;
+  }
+  .hero-orbit-house-img {
+    max-height: 80px;
   }
 }

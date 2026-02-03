@@ -122,9 +122,9 @@ export default function CashBuyerPage() {
               <h2 className="cb-cta-heading">Get Your Cash Offer</h2>
               <p className="cb-cta-desc">Tell us about your property. We&apos;ll get back to you with a no-obligation offer within 24 hours.</p>
               <div className="cb-cta-contact">
-                <p><strong>Phone</strong><br /><a href="tel:+1234567890">(123) 456-7890</a></p>
-                <p><strong>Email</strong><br /><a href="mailto:info@sellerstopchoice.com">info@sellerstopchoice.com</a></p>
-                <p><strong>Address</strong><br />123 Main Street, Suite 100<br />Your City, ST 12345</p>
+                <p><strong>CALL US</strong><br /><a href="tel:+18669174001">866 917 4001</a></p>
+                <p><strong>EMAIL US</strong><br /><a href="mailto:nick@nrprobate.com">nick@nrprobate.com</a></p>
+                <p><strong>OFFICE LOCATION</strong><br />440 E. Huntington Dr. #300<br />Arcadia, CA 91006</p>
               </div>
             </div>
             <div className="cb-cta-col cb-cta-form-wrap">
