@@ -10,6 +10,20 @@ import BenefitIcon from './components/BenefitIcon';
 const scrollViewport = { once: true, amount: 0.12 };
 const scrollTransition = { duration: 0.55, ease: 'easeOut' };
 
+function getPhoneDigits(phone: string): string {
+  return phone.replace(/\D/g, '');
+}
+
+function isUSPhoneValid(phone: string): boolean {
+  const d = getPhoneDigits(phone);
+  return d.length === 10 || (d.length === 11 && d.startsWith('1'));
+}
+
+function getPhoneForStorage(phone: string): string {
+  const d = getPhoneDigits(phone);
+  return d.length === 11 && d.startsWith('1') ? d.slice(1) : d;
+}
+
 export default function CashBuyerPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const [logoError, setLogoError] = useState(false);
@@ -18,16 +32,53 @@ export default function CashBuyerPage() {
 
   async function handleCashOfferSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setFormStatus({ type: 'idle' });
+
+    const name = formData.fullName.trim();
+    const email = formData.email.trim();
+    const phone = formData.phone.trim();
+    const address = formData.address.trim();
+
+    if (!name) {
+      setFormStatus({ type: 'error', message: 'Full name is required.' });
+      return;
+    }
+    if (!email) {
+      setFormStatus({ type: 'error', message: 'Email is required.' });
+      return;
+    }
+    if (!phone) {
+      setFormStatus({ type: 'error', message: 'Phone number is required.' });
+      return;
+    }
+    const digits = getPhoneDigits(phone);
+    if (digits.length === 0 || digits.length > 11) {
+      setFormStatus({ type: 'error', message: 'Phone must contain only numbers.' });
+      return;
+    }
+    if (!/^\d+$/.test(digits)) {
+      setFormStatus({ type: 'error', message: 'Phone must contain only numbers.' });
+      return;
+    }
+    if (!isUSPhoneValid(phone)) {
+      setFormStatus({ type: 'error', message: 'Please enter a valid 10-digit US phone number.' });
+      return;
+    }
+    if (!address) {
+      setFormStatus({ type: 'error', message: 'Address is required.' });
+      return;
+    }
+
     setFormStatus({ type: 'loading' });
     try {
       const res = await fetch('/api/cash-offer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          full_name: formData.fullName,
-          email: formData.email,
-          phone: formData.phone || null,
-          address: formData.address || null,
+          full_name: name,
+          email,
+          phone: getPhoneForStorage(phone),
+          address,
         }),
       });
       const data = await res.json().catch(() => ({}));
@@ -40,6 +91,11 @@ export default function CashBuyerPage() {
     } catch {
       setFormStatus({ type: 'error', message: 'Something went wrong. Please try again.' });
     }
+  }
+
+  function handlePhoneChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value.replace(/\D/g, '');
+    if (value.length <= 11) setFormData((p) => ({ ...p, phone: value }));
   }
 
   return (
@@ -201,14 +257,22 @@ export default function CashBuyerPage() {
                 />
                 <input
                   type="tel"
-                  placeholder="Phone number"
+                  inputMode="numeric"
+                  autoComplete="tel"
+                  placeholder="US phone (10 digits, numbers only)"
+                  required
                   value={formData.phone}
-                  onChange={(e) => setFormData((p) => ({ ...p, phone: e.target.value }))}
+                  onChange={handlePhoneChange}
                   disabled={formStatus.type === 'loading'}
+                  maxLength={11}
+                  title="10-digit US phone number, numbers only"
+                  aria-describedby="phone-hint"
                 />
+                <span id="phone-hint" className="cb-cta-form-hint">Numbers only. 10 digits (US).</span>
                 <input
                   type="text"
                   placeholder="Address"
+                  required
                   value={formData.address}
                   onChange={(e) => setFormData((p) => ({ ...p, address: e.target.value }))}
                   disabled={formStatus.type === 'loading'}
