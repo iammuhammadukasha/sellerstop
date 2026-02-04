@@ -13,6 +13,34 @@ const scrollTransition = { duration: 0.55, ease: 'easeOut' };
 export default function CashBuyerPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const [logoError, setLogoError] = useState(false);
+  const [formData, setFormData] = useState({ fullName: '', email: '', phone: '', address: '' });
+  const [formStatus, setFormStatus] = useState<{ type: 'idle' | 'loading' | 'success' | 'error'; message?: string }>({ type: 'idle' });
+
+  async function handleCashOfferSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setFormStatus({ type: 'loading' });
+    try {
+      const res = await fetch('/api/cash-offer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          full_name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone || null,
+          address: formData.address || null,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setFormStatus({ type: 'error', message: data.error || 'Something went wrong.' });
+        return;
+      }
+      setFormStatus({ type: 'success', message: 'Thanks! We\'ll get back to you with your cash offer within 24 hours.' });
+      setFormData({ fullName: '', email: '', phone: '', address: '' });
+    } catch {
+      setFormStatus({ type: 'error', message: 'Something went wrong. Please try again.' });
+    }
+  }
 
   return (
     <div className="cash-buyer-page">
@@ -154,12 +182,46 @@ export default function CashBuyerPage() {
               </div>
             </div>
             <div className="cb-cta-col cb-cta-form-wrap">
-              <form className="cb-cta-form" onSubmit={(e) => e.preventDefault()}>
-                <input type="text" placeholder="Full name" required />
-                <input type="email" placeholder="Email" required />
-                <input type="tel" placeholder="Phone number" />
-                <input type="text" placeholder="Address" />
-                <button type="submit" className="cb-btn cb-btn-primary cb-btn-lg">Get My Cash Offer</button>
+              <form className="cb-cta-form" onSubmit={handleCashOfferSubmit}>
+                <input
+                  type="text"
+                  placeholder="Full name"
+                  required
+                  value={formData.fullName}
+                  onChange={(e) => setFormData((p) => ({ ...p, fullName: e.target.value }))}
+                  disabled={formStatus.type === 'loading'}
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
+                  disabled={formStatus.type === 'loading'}
+                />
+                <input
+                  type="tel"
+                  placeholder="Phone number"
+                  value={formData.phone}
+                  onChange={(e) => setFormData((p) => ({ ...p, phone: e.target.value }))}
+                  disabled={formStatus.type === 'loading'}
+                />
+                <input
+                  type="text"
+                  placeholder="Address"
+                  value={formData.address}
+                  onChange={(e) => setFormData((p) => ({ ...p, address: e.target.value }))}
+                  disabled={formStatus.type === 'loading'}
+                />
+                {formStatus.type === 'success' && formStatus.message && (
+                  <p className="cb-cta-form-message cb-cta-form-message--success" role="status">{formStatus.message}</p>
+                )}
+                {formStatus.type === 'error' && formStatus.message && (
+                  <p className="cb-cta-form-message cb-cta-form-message--error" role="alert">{formStatus.message}</p>
+                )}
+                <button type="submit" className="cb-btn cb-btn-primary cb-btn-lg" disabled={formStatus.type === 'loading'}>
+                  {formStatus.type === 'loading' ? 'Sending…' : 'Get My Cash Offer'}
+                </button>
               </form>
             </div>
           </div>

@@ -1363,6 +1363,17 @@ body {
 .cb-cta-form button {
   margin-top: 0.25rem;
 }
+.cb-cta-form-message {
+  font-size: 0.9rem;
+  padding: 0.5rem 0;
+  margin: 0;
+}
+.cb-cta-form-message--success {
+  color: #0d5c2e;
+}
+.cb-cta-form-message--error {
+  color: #b91c1c;
+}
 
 /* Parallax: all 4 sections overlay (1 under 2 under 3 under 4) */
 .cb-parallax-wrap {
