@@ -1,7 +1,43 @@
 import { NextResponse } from 'next/server';
+import { Resend } from 'resend';
 import { getSupabaseServer } from '@/lib/supabase';
 
 const TABLE = 'cash_offer_leads';
+
+async function sendLeadNotification(params: {
+  full_name: string;
+  email: string;
+  phone: string;
+  address: string;
+}) {
+  const apiKey = process.env.RESEND_API_KEY;
+  const toEmail = process.env.CASH_OFFER_NOTIFY_EMAIL;
+  if (!apiKey || !toEmail) return;
+
+  const resend = new Resend(apiKey);
+  const from = process.env.RESEND_FROM_EMAIL || 'Seller Stop <onboarding@resend.dev>';
+
+  await resend.emails.send({
+    from,
+    to: toEmail,
+    subject: `New Cash Offer Request: ${params.full_name}`,
+    html: `
+      <h2>New cash offer request</h2>
+      <p><strong>Name:</strong> ${escapeHtml(params.full_name)}</p>
+      <p><strong>Email:</strong> ${escapeHtml(params.email)}</p>
+      <p><strong>Phone:</strong> ${escapeHtml(params.phone)}</p>
+      <p><strong>Address:</strong> ${escapeHtml(params.address)}</p>
+    `,
+  });
+}
+
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
 
 export async function POST(request: Request) {
   try {
@@ -77,6 +113,13 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
+
+    await sendLeadNotification({
+      full_name: String(full_name).trim(),
+      email: String(email).trim().toLowerCase(),
+      phone: normalizedPhone,
+      address: String(address).trim(),
+    }).catch((err) => console.error('Email notification failed:', err));
 
     return NextResponse.json({ success: true, id: data?.id });
   } catch (e) {
