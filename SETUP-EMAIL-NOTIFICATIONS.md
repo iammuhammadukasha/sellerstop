@@ -68,4 +68,14 @@ By default, emails are sent from Resend’s address (`onboarding@resend.dev`). T
 RESEND_FROM_EMAIL=Seller Stop <notifications@yourdomain.com>
 ```
 
-Restart the dev server. New notifications will use this “From” address.
+Restart the dev server. New notifications will then use this From address.
+
+---
+
+## Not receiving emails? Troubleshooting
+
+1. **Check the terminal** where `npm run dev` is running. When you submit the form, look for a line like `Resend email error: ...`. That message tells you why the send failed.
+2. **Resend dashboard** → **Logs**. See whether the send was attempted and what status it has.
+3. **Spam/junk folder**. Check spam or promotions for the notification email.
+4. **Correct recipient**. Confirm `CASH_OFFER_NOTIFY_EMAIL` in `.env.local` is exactly the address you are checking (no typos, no spaces).
+5. **Domain**: If you added a domain in Resend, set `RESEND_FROM_EMAIL` to use it; otherwise the app uses `onboarding@resend.dev`. New notifications will use this “From” address.

@@ -9,17 +9,19 @@ async function sendLeadNotification(params: {
   email: string;
   phone: string;
   address: string;
-}) {
+}): Promise<{ ok: boolean; error?: string }> {
   const apiKey = process.env.RESEND_API_KEY;
   const toEmail = process.env.CASH_OFFER_NOTIFY_EMAIL;
-  if (!apiKey || !toEmail) return;
+  if (!apiKey || !toEmail) {
+    return { ok: false, error: 'RESEND_API_KEY or CASH_OFFER_NOTIFY_EMAIL not set' };
+  }
 
   const resend = new Resend(apiKey);
   const from = process.env.RESEND_FROM_EMAIL || 'Seller Stop <onboarding@resend.dev>';
 
-  await resend.emails.send({
+  const { data, error } = await resend.emails.send({
     from,
-    to: toEmail,
+    to: [toEmail],
     subject: `New Cash Offer Request: ${params.full_name}`,
     html: `
       <h2>New cash offer request</h2>
@@ -29,6 +31,12 @@ async function sendLeadNotification(params: {
       <p><strong>Address:</strong> ${escapeHtml(params.address)}</p>
     `,
   });
+
+  if (error) {
+    console.error('Resend email error:', error.message || error);
+    return { ok: false, error: error.message || String(error) };
+  }
+  return { ok: true };
 }
 
 function escapeHtml(s: string): string {
@@ -114,12 +122,15 @@ export async function POST(request: Request) {
       );
     }
 
-    await sendLeadNotification({
+    const emailResult = await sendLeadNotification({
       full_name: String(full_name).trim(),
       email: String(email).trim().toLowerCase(),
       phone: normalizedPhone,
       address: String(address).trim(),
-    }).catch((err) => console.error('Email notification failed:', err));
+    });
+    if (!emailResult.ok) {
+      console.error('Email notification failed:', emailResult.error);
+    }
 
     return NextResponse.json({ success: true, id: data?.id });
   } catch (e) {
