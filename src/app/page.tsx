@@ -4,8 +4,29 @@ import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import HeroOrbit from './components/HeroOrbit';
 import HowItWorksCarousel from './components/HowItWorksCarousel';
-import TestimonialCarousel from './components/TestimonialCarousel';
+import { TestimonialCarousel } from '@/components/ui/testimonial';
 import BenefitIcon from './components/BenefitIcon';
+
+const TESTIMONIAL_DATA = [
+  {
+    id: 1,
+    name: 'Maria L., Phoenix',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=128&h=128&fit=crop',
+    description: 'They gave me a fair offer and we closed in 10 days. No repairs, no showings—exactly what I needed.',
+  },
+  {
+    id: 2,
+    name: 'James K., Dallas',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=128&h=128&fit=crop',
+    description: 'I was relocating for work and needed to sell fast. Seller Stop made it hassle-free and transparent.',
+  },
+  {
+    id: 3,
+    name: 'Sandra T., Atlanta',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=128&h=128&fit=crop',
+    description: 'No agent fees, no staging, no waiting. The offer was clear and the process was straightforward.',
+  },
+];
 
 const scrollViewport = { once: true, amount: 0.12 };
 const scrollTransition = { duration: 0.55, ease: 'easeOut' };
@@ -210,14 +231,26 @@ export default function CashBuyerPage() {
         </motion.div>
       </section>
 
-      <motion.div
+      <motion.section
+        className="cb-section cb-section-card-wrap cb-testimonial-carousel"
+        id="testimonials"
         initial={{ opacity: 0, x: 72 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={scrollViewport}
         transition={scrollTransition}
       >
-        <TestimonialCarousel />
-      </motion.div>
+        <div className="cb-section-card">
+          <div className="cb-container">
+            <h2 className="cb-section-title">What Our Client Says</h2>
+            <TestimonialCarousel
+              testimonials={TESTIMONIAL_DATA}
+              showArrows
+              showDots
+              className="max-w-2xl mx-auto min-h-[320px]"
+            />
+          </div>
+        </div>
+      </motion.section>
 
       <section className="cb-section cb-section-card-wrap cb-cta-section" id="contact">
         <motion.div
