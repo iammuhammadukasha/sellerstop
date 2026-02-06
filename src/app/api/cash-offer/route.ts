@@ -10,14 +10,18 @@ async function sendLeadNotification(params: {
   phone: string;
   address: string;
 }): Promise<{ ok: boolean; error?: string }> {
-  const apiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.CASH_OFFER_NOTIFY_EMAIL;
+  const apiKey = process.env.RESEND_API_KEY?.trim();
+  const toEmail = process.env.CASH_OFFER_NOTIFY_EMAIL?.trim();
   if (!apiKey || !toEmail) {
-    return { ok: false, error: 'RESEND_API_KEY or CASH_OFFER_NOTIFY_EMAIL not set' };
+    const msg = !apiKey
+      ? 'RESEND_API_KEY is not set (add it in .env.local or your hosting env vars).'
+      : 'CASH_OFFER_NOTIFY_EMAIL is not set (add it in .env.local or your hosting env vars).';
+    console.error('Email notification skipped:', msg);
+    return { ok: false, error: msg };
   }
 
   const resend = new Resend(apiKey);
-  const from = process.env.RESEND_FROM_EMAIL || 'Seller Stop <onboarding@resend.dev>';
+  const from = (process.env.RESEND_FROM_EMAIL?.trim() || 'Seller Stop <onboarding@resend.dev>');
 
   const { data, error } = await resend.emails.send({
     from,
@@ -36,6 +40,7 @@ async function sendLeadNotification(params: {
     console.error('Resend email error:', error.message || error);
     return { ok: false, error: error.message || String(error) };
   }
+  console.log('Resend email sent to', toEmail, 'id:', data?.id);
   return { ok: true };
 }
 
@@ -94,7 +99,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            'Database not set up yet. Add NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY to .env.local (see SETUP-DATABASE.md).',
+            'Database not configured for this environment. Add NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in your hosting dashboard (e.g. Vercel → Settings → Environment Variables), then redeploy.',
         },
         { status: 503 }
       );
