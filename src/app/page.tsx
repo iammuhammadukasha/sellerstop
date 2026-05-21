@@ -138,9 +138,9 @@ export default function CashBuyerPage() {
             </a>
             <div className="cb-nav-links-hero">
               <a href="#how">How It Works</a>
-              <a href="#benefits">Why Sell to Us</a>
-              <a href="#testimonials">Testimonials</a>
-              <a href="#contact" className="cb-btn cb-btn-hero-primary">Get Your Cash Offer</a>
+              <a href="#benefits">Why Choose Us</a>
+              <a href="#testimonials">Success Stories</a>
+              <a href="#contact" className="cb-btn cb-btn-hero-primary">Get My Free Offer</a>
             </div>
           </div>
         </nav>
