@@ -12,19 +12,19 @@ const TESTIMONIAL_DATA = [
     id: 1,
     name: 'Maria L., Phoenix',
     avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=128&h=128&fit=crop',
-    description: 'They gave me a fair offer and we closed in 10 days. No repairs, no showings—exactly what I needed.',
+    description: 'I needed to sell quickly after a family situation changed everything. Seller Stop gave me a fair offer the next day, and we closed in 10 days flat. I didn\'t have to clean a thing. Genuinely stress-free.',
   },
   {
     id: 2,
     name: 'James K., Dallas',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=128&h=128&fit=crop',
-    description: 'I was relocating for work and needed to sell fast. Seller Stop made it hassle-free and transparent.',
+    description: 'I was relocating for a new job and had maybe three weeks to figure out my house. These guys were transparent from day one — no games, no sudden price changes. Exactly what I needed.',
   },
   {
     id: 3,
     name: 'Sandra T., Atlanta',
     avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=128&h=128&fit=crop',
-    description: 'No agent fees, no staging, no waiting. The offer was clear and the process was straightforward.',
+    description: 'After sitting on an inherited property for months, I finally called Seller Stop. No staging, no showings, no fees. They made the whole process feel easy when I expected it to be a nightmare.',
   },
 ];
 
@@ -168,11 +168,11 @@ export default function CashBuyerPage() {
                   </svg>
                 </span>
               </div>
-              <h1 className="cb-hero-saas-headline">Seller Stop Choice</h1>
+              <h1 className="cb-hero-saas-headline">Your House. Your Timeline. Your Cash.</h1>
               <p className="cb-hero-saas-subtitle">
-                We buy your house as-is. No repairs, no cleaning, no hassle—just a fair cash offer and a quick close.
+                Whether you're facing a life change, an inherited property, or just want to skip the traditional selling process — we make it easy. Get a fair cash offer with zero fees, zero repairs, and zero stress.
               </p>
-              <a href="#contact" className="cb-hero-saas-cta">Get Your Cash Offer</a>
+              <a href="#contact" className="cb-hero-saas-cta">Get My Free Cash Offer</a>
             </div>
           </motion.div>
         </div>
@@ -188,7 +188,7 @@ export default function CashBuyerPage() {
           transition={scrollTransition}
         >
           <div className="cb-container">
-            <h2 className="cb-section-title cb-section-title--jost">How It Works</h2>
+            <h2 className="cb-section-title cb-section-title--jost">Three Steps to Sold</h2>
             <p className="cb-section-subtitle">Sell your house in three simple steps. No fees, no obligation.</p>
             <HowItWorksCarousel />
           </div>
@@ -204,27 +204,27 @@ export default function CashBuyerPage() {
           transition={scrollTransition}
         >
           <div className="cb-container">
-            <h2 className="cb-section-title">Why Sell to Us for Cash?</h2>
+            <h2 className="cb-section-title">Why Homeowners Choose Seller Stop</h2>
             <div className="cb-benefits-grid cb-benefits-grid--row">
               <div className="cb-benefit-card">
                 <BenefitIcon name="cash" />
-                <h3>Fair cash offer</h3>
-                <p>We buy as-is. No lowballing—we make offers based on real market value.</p>
+                <h3>Fair Cash Offer</h3>
+                <p>We don't make lowball offers. Every offer is backed by local market research so you know you're getting a number you can trust.</p>
               </div>
               <div className="cb-benefit-card">
                 <BenefitIcon name="lightning" />
-                <h3>Close in days</h3>
-                <p>Skip months of listing and showings. Close in as little as 7 days if you need to.</p>
+                <h3>Close in as Little as 7 Days</h3>
+                <p>No listings, no open houses, no waiting for mortgage approvals. When you're ready to move on, we're ready to close.</p>
               </div>
               <div className="cb-benefit-card">
                 <BenefitIcon name="wrench" />
-                <h3>No repairs needed</h3>
-                <p>We buy houses in any condition. No need to fix, clean, or stage.</p>
+                <h3>Sell It Exactly As-Is</h3>
+                <p>Cracked foundation? Outdated kitchen? Tenants still inside? It doesn't matter. We buy houses in any condition — you don't lift a finger.</p>
               </div>
               <div className="cb-benefit-card">
                 <BenefitIcon name="file" />
-                <h3>No agent fees</h3>
-                <p>No commissions or hidden costs. The offer you see is what you get at closing.</p>
+                <h3>Zero Fees. Zero Commissions.</h3>
+                <p>What we offer is what you receive. No agent commissions, no surprise closing costs, no hidden deductions. Just a clean transaction.</p>
               </div>
             </div>
           </div>
@@ -241,7 +241,7 @@ export default function CashBuyerPage() {
       >
         <div className="cb-section-card">
           <div className="cb-container">
-            <h2 className="cb-section-title">What Our Client Says</h2>
+            <h2 className="cb-section-title">Real Homeowners. Real Results.</h2>
             <TestimonialCarousel
               testimonials={TESTIMONIAL_DATA}
               showArrows
@@ -262,8 +262,8 @@ export default function CashBuyerPage() {
         >
           <div className="cb-container cb-cta-grid">
             <div className="cb-cta-col cb-cta-info">
-              <h2 className="cb-cta-heading">Get Your Cash Offer</h2>
-              <p className="cb-cta-desc">Tell us about your property. We&apos;ll get back to you with a no-obligation offer within 24 hours.</p>
+              <h2 className="cb-cta-heading">You're One Step Away From a Fresh Start</h2>
+              <p className="cb-cta-desc">Tell us a little about your property and we&apos;ll get back to you with a no-obligation cash offer within 24 hours. There&apos;s no pressure, no commitment, and absolutely no cost to find out what your home is worth.</p>
               <div className="cb-cta-contact">
                 <p><strong>CALL US</strong><br /><a href="tel:+18669174001">866 917 4001</a></p>
                 <p><strong>EMAIL US</strong><br /><a href="mailto:nick@nrprobate.com">nick@nrprobate.com</a></p>
@@ -333,7 +333,9 @@ export default function CashBuyerPage() {
         transition={scrollTransition}
       >
         <div className="cb-container">
-          <p>Seller Stop Choice © 2026 All rights reserved.</p>
+          <p><strong>Seller Stop Choice</strong> — Helping homeowners move forward since 2016.</p>
+          <p style={{ fontSize: '0.9rem', opacity: 0.8 }}>Fair offers. Fast closes. No fees. Ever.</p>
+          <p style={{ marginTop: '8px' }}>© 2026 Seller Stop Choice. All rights reserved.</p>
         </div>
       </motion.footer>
     </div>
