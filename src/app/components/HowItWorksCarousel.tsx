@@ -1,9 +1,9 @@
 'use client';
 
 const STEPS = [
-  { num: 1, title: 'Tell us about your property', desc: 'Fill out a short form or call us. We\'ll ask a few questions about your house and situation.' },
-  { num: 2, title: 'Get your cash offer', desc: 'We\'ll review your property and send you a fair cash offer—usually within 24 hours.' },
-  { num: 3, title: 'Close on your timeline', desc: 'Accept the offer and close when it works for you. We handle the rest. Cash at closing.' },
+  { num: 1, title: 'Tell Us About Your Home', desc: 'No lengthy forms or confusing paperwork. Just share a few basic details about your property — we\'ll take it from there. It takes less than 3 minutes.' },
+  { num: 2, title: 'Receive Your Cash Offer', desc: 'Within 24 hours, we\'ll present you with a transparent, no-obligation cash offer based on real market data. No guesswork. No lowball tactics.' },
+  { num: 3, title: 'Close When You\'re Ready', desc: 'You pick the closing date — whether that\'s 7 days or 60. We handle all the paperwork and you walk away with cash in hand.' },
 ];
 
 export default function HowItWorksCarousel() {
